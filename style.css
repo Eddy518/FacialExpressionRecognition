@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* color-scheme: dark; */
+  background-color: #111927;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 2px solid maroon; */
+  padding: 9px;
+}
+.logo > img {
+  border-radius: 9999px;
+}
+.nav,
+.logo {
+  display: flex;
+  /* border: 1px solid blue; */
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+  gap: 6px;
+}
+.nav {
+  justify-content: space-between;
+}
+
+.links a {
+  text-decoration: none;
+  color: #8fafdf;
+  font-size: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding-left: 8px;
+  font-weight: bold;
+}
+.links a:hover {
+  text-decoration: underline;
+}
+
+.header {
+  margin: 0 auto;
+  font-size: 30px;
+  max-width: 500px;
+}
+.heading {
+  color: #8fafdf;
+  font-size: 24px;
+  font-weight: bold;
+}
+.section {
+  display: flex;
+  border: 2px solid green;
+  width: 900px;
+  gap: 5px;
+  padding: 9px;
+  justify-content: center;
+  /* From https://css.glass */
+  background: rgba(50, 54, 59, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.2px);
+  -webkit-backdrop-filter: blur(9.2px);
+  border: 1px solid rgba(50, 54, 59, 0.53);
+}
+.section > p {
+  font-size: 20px;
+  color: grey;
+}
+.section > img {
+  border-radius: 9px;
+}
+pre {
+  color: white;
+  margin: 0 auto;
+}
+
+.footer {
+  margin: 0 auto;
+  padding: 5px;
+}
+.copyright {
+  bottom: 0;
+}
+.signing-container {
+  padding: 19px 55px;
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  background-color: gray;
+  gap: 3em;
+  border-radius: 5px;
+  /**/
+  background: rgba(17, 25, 39, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.sign-text > h3,
+.sign-text > p {
+  color: #f4e3bd;
+}
+.sign-button button {
+  background-color: #8fafdf;
+  color: #fbfcff;
+  border: 2px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 5px 20px;
+}
+.sign-button button:hover {
+  background-color: #6a7f9e;
+  box-shadow: 2px salmon;
+}
+p {
+  font-family: "Inter", sans-serif;
+}
