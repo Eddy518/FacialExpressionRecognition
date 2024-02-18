@@ -1,0 +1,71 @@
+{% extends "layout.html" %} {% block content %}
+<div class="container">
+  <div class="nav">
+    <div class="logo">
+      <a href="/" class="logo">
+        <img
+          src="{{url_for('static',filename='assets/logo.jpg')}}"
+          alt="logo"
+          width="60"
+          height="60"
+        />
+        <h2 class="heading">Facial Expression Recognition</h2>
+      </a>
+    </div>
+    <div class="links">
+      <a href="/register">Sign up</a>
+      <a href="/login">Login</a>
+    </div>
+  </div>
+  <div class="header">
+    <p class="header-content">
+      Introducing our Facial Expression Recognition model with enhanced accuracy
+      and dynamicity
+    </p>
+  </div>
+
+  <div class="main">
+    <div class="section">
+      <img src="{{ url_for('static',filename='assets/happy_face.jpg')}}" alt="happy_face" width="300" />
+      <p>
+        Imagine being able to understand emotions with just a glance. Our Facial
+        Expression Recognition model makes it possible, with cutting-edge
+        technology to enhance reading faces with unparalleled accuracy 🙂.<br />
+      </p>
+    </div>
+    <pre>
+            .
+            .
+            .
+        </pre
+    >
+    <div class="section">
+      <p>
+        We do not store your image or video data. We only keep logs of your
+        facial expressions results.<br />
+        We value your privacy 👌.<br />
+        What are you waiting for? <br />
+        <a href="/register" class="sign"> Sign up </a>now and experience our
+        model at its finest.
+      </p>
+      <img src="{{ url_for('static',filename='assets/excited_person.jpg')}}" alt="happy_face" width="300" />
+    </div>
+    <div class="signing-container">
+      <div class="sign-text">
+        <h3>Try it Now!</h3>
+        <p>Sign up to start unlocking insights from faces</p>
+      </div>
+      <div class="sign-button">
+        <a href="/register">
+          <button>Sign up</button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="copyright">
+      <p>&copy;<span id="year"></span></p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

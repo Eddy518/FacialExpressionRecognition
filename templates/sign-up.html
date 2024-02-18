@@ -1,0 +1,51 @@
+{% extends "layout.html" %} {% block content %}
+<div class="container-login">
+  <div class="wrapper">
+    <div class="heading">
+      <img src="{{url_for('static',filename='assets/logo.jpg')}}" alt="logo" width="60" height="60" />
+      <h2>Sign up</h2>
+      <p>Sign up below to create a new account</p>
+    </div>
+    <div class="input-container">
+      <div class="name">
+        <h3>UserName:</h3>
+        <i class="fa-solid fa-user"></i>
+        <input
+          type="text"
+          class="form"
+          id="name"
+          placeholder="example"
+          name="name"
+        />
+      </div>
+      <div class="email">
+        <h3>Email:</h3>
+        <i class="fa-solid fa-envelope"></i>
+        <input
+          type="text"
+          class="form"
+          placeholder="example@example.com"
+          id="email"
+          name="email"
+        />
+      </div>
+      <div class="password">
+        <h3>Password:</h3>
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" class="form" id="password" name="password" />
+      </div>
+    </div>
+    <div class="forgot-password">
+      <a href="">Forgot Password?</a>
+    </div>
+    <div class="signup-login-button">
+      <a href="/dashboard">
+      <button>Sign up</button>
+      </a>
+    </div>
+  </div>
+  <div class="back-btn">
+    <a href="/"> &#8668; Go Back</a>
+  </div>
+</div>
+{% endblock content %}

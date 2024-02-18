@@ -86,14 +86,14 @@
   color: #efeaed;
   cursor: pointer;
 }
-.signup-login-button > button {
+.signup-login-button button {
   outline: none;
   color: #efeaed;
   background-color: #8fafdf;
   height: 56px;
   width: 100%;
 }
-.signup-login-button > button:hover {
+.signup-login-button button:hover {
   background-color: #6a7f9e;
 }
 button,
