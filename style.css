@@ -53,8 +53,9 @@
 .header {
   margin: 0 auto;
   font-size: 30px;
-  max-width: 500px;
+  max-width: 600px;
 }
+
 .heading {
   color: #8fafdf;
   font-size: 24px;
@@ -75,9 +76,11 @@
   -webkit-backdrop-filter: blur(9.2px);
   border: 1px solid rgba(50, 54, 59, 0.53);
 }
-.section > p {
+.section p {
   font-size: 20px;
   color: grey;
+  line-height: 1.5;
+  padding: 8px;
 }
 .section > img {
   border-radius: 9px;
@@ -129,4 +132,40 @@ pre {
 }
 p {
   font-family: "Inter", sans-serif;
+}
+hr {
+  width: 700px;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px dotted #999;
+  color: #737476;
+  height: 0.3px;
+}
+.header-content {
+  font-family: futura;
+  font-style: italic;
+  text-align: center;
+  max-width: 700px;
+  font-size: 30px;
+  font-weight: bold;
+
+  background: #1abc9c;
+  background: linear-gradient(to right, #1abc9c 34%, #2980b9 65%, #34495e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.message {
+  font-family: futura;
+  font-style: italic;
+  text-align: center;
+  max-width: 700px;
+  color: #313131;
+  font-size: 28px;
+  font-weight: bold;
+}
+.sign {
+  color: wheat;
+  text-decoration: none;
 }
