@@ -2,7 +2,7 @@
 <div class="container">
   <div class="nav">
     <div class="logo">
-      <a href="/" class="logo">
+      <a href="{{ url_for('home') }}" class="logo">
         <img
           src="{{url_for('static',filename='assets/logo.jpg')}}"
           alt="logo"
@@ -13,8 +13,8 @@
       </a>
     </div>
     <div class="links">
-      <a href="/register">Sign up</a>
-      <a href="/login">Login</a>
+      <a href="{{ url_for('register') }}">Sign up</a>
+      <a href="{{ url_for('login') }}">Login</a>
     </div>
   </div>
   <div class="header">
@@ -45,7 +45,7 @@
         facial expressions results.<br />
         We value your privacy 👌.<br />
         What are you waiting for? <br />
-        <a href="/register" class="sign"> Sign up </a>now and experience our
+        <a href="{{ url_for('register') }}" class="sign"> Sign up </a>now and experience our
         model at its finest.
       </p>
       <img src="{{ url_for('static',filename='assets/excited_person.jpg')}}" alt="happy_face" width="300" />
@@ -56,7 +56,7 @@
         <p>Sign up to start unlocking insights from faces</p>
       </div>
       <div class="sign-button">
-        <a href="/register">
+        <a href="{{ url_for('register') }}">
           <button>Sign up</button>
         </a>
       </div>
