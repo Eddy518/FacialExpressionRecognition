@@ -12,6 +12,11 @@
       <p>{% block paragraph %}{% endblock %}</p>
     </div>
     <div class="input-container">{% block input %} {% endblock %}</div>
+    {% if forgot == True %}
+    <div class="forgot-password">
+  <a href="">Forgot Password?</a>
+</div>
+    {% endif %}
     <div class="signup-login-button">{% block btn %} {% endblock %}</div>
     <div class="login-account">{% block status %} {% endblock %}</div>
   </div>

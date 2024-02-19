@@ -2,20 +2,23 @@ from flask import Flask,render_template,url_for
 
 app = Flask(__name__)
 
+
+forgot = False
+
 @app.route('/home')
 @app.route('/')
 def home():
-    return render_template('index.html',title='Home')    
+    return render_template('index.html',title='Home')
 
 @app.route('/login')
 def login():
-    return render_template('login.html',title='Log In')
+    return render_template('login.html',title='Log In',forgot = True)
 
 @app.route('/register')
 @app.route('/sign-up')
 @app.route('/signup')
 def register():
-    return render_template('sign-up.html',title='Sign Up')
+    return render_template('sign-up.html',title='Sign Up',forgot = False)
 
 if __name__ == '__main__':
     app.run(debug=True)
