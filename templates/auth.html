@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block content %}
+<div class="container-login">
+  <div class="wrapper">
+    <div class="heading">
+      <img
+        src="{{url_for('static',filename='assets/logo.jpg')}}"
+        alt="logo"
+        width="60"
+        height="60"
+      />
+      <h2>{% block heading %}{% endblock %}</h2>
+      <p>{% block paragraph %}{% endblock %}</p>
+    </div>
+    <div class="input-container">{% block input %} {% endblock %}</div>
+    <div class="signup-login-button">{% block btn %} {% endblock %}</div>
+    <div class="login-account">{% block status %} {% endblock %}</div>
+  </div>
+  <div class="back-btn">
+    <a href="{{ url_for('home') }}"> &#8668; Go Back</a>
+  </div>
+</div>
+{% endblock content %}

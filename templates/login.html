@@ -1,12 +1,9 @@
-{% extends "layout.html" %} {% block content %}
-<div class="container-login">
-  <div class="wrapper">
-    <div class="heading">
-      <img src="{{url_for('static',filename='assets/logo.jpg')}}" alt="logo" width="60" height="60" />
-      <h2>Login</h2>
-      <p>Login using your <span>Email</span> and <span>Password</span></p>
-    </div>
-    <div class="input-container">
+{% extends "auth.html" %}
+{% block heading %} 
+   Login 
+{% endblock heading %}
+{% block paragraph %} Login using your <span>Email</span> and <span>Password</span>{% endblock paragraph %}
+{% block input %}
       <div class="email">
         <h3>Your Email:</h3>
         <i class="fa-solid fa-envelope"></i>
@@ -23,24 +20,18 @@
         <i class="fa-solid fa-lock"></i>
         <input type="password" class="form" id="password" name="password" />
       </div>
-    </div>
-    <div class="forgot-password">
-      <a href="">Forgot Password?</a>
-    </div>
-    <div class="signup-login-button">
+{% endblock input %}
+<div class="forgot-password">
+  <a href="">Forgot Password?</a>
+</div>
+{% block btn %}
       <a href="{{ url_for('login') }}">
        <button>Log in</button>
       </a>
-    </div>
-    <div class="create-account">
+{% endblock btn %}
+{% block status %}
       <p>
         Not registered?
         <a href="{{ url_for('register') }}" class="create-acc-link">Create account</a>
       </p>
-    </div>
-  </div>
-  <div class="back-btn">
-    <a href="{{url_for('home')}}"> &#8668; Go Back</a>
-  </div>
-</div>
-{% endblock content %}
+{% endblock status %}

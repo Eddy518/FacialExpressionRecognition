@@ -1,12 +1,11 @@
-{% extends "layout.html" %} {% block content %}
-<div class="container-login">
-  <div class="wrapper">
-    <div class="heading">
-      <img src="{{url_for('static',filename='assets/logo.jpg')}}" alt="logo" width="60" height="60" />
-      <h2>Sign up</h2>
-      <p>Sign up below to create a new account</p>
-    </div>
-    <div class="input-container">
+{% extends "auth.html" %}
+{% block heading %}
+   Sign up
+{% endblock heading %}
+{% block paragraph %}
+   Sign up below to create a new account
+{% endblock %}
+{% block input %}
       <div class="name">
         <h3>UserName:</h3>
         <i class="fa-solid fa-user"></i>
@@ -34,21 +33,16 @@
         <i class="fa-solid fa-lock"></i>
         <input type="password" class="form" id="password" name="password" />
       </div>
-    </div>
-    <div class="signup-login-button">
+{% endblock %}
+ {% block btn %}
       <a href="{{ url_for('register') }}">
-      <button>Sign up</button>
+        <button>Sign up</button>
       </a>
-    </div>
-    <div class="login-account">
+{% endblock %}
+{% block status %}
       <p>
         Already a member?
         <a href="{{ url_for('login') }}" class="login-acc-link">Log in</a>
       </p>
-    </div>
-  </div>
-  <div class="back-btn">
-    <a href="{{ url_for('home') }}"> &#8668; Go Back</a>
-  </div>
-</div>
-{% endblock content %}
+{% endblock %}
+
