@@ -1,48 +1,74 @@
-{% extends "auth.html" %}
-{% block heading %}
-   Sign up
-{% endblock heading %}
-{% block paragraph %}
-   Sign up below to create a new account
-{% endblock %}
+{% extends "auth.html" %} 
+{% block heading %} Sign up {% endblock heading %} 
+{%block paragraph %} Sign up below to create a new account {% endblock %} 
 {% block input %}
-      <div class="name">
-        <h3>UserName:</h3>
-        <i class="fa-solid fa-user"></i>
-        <input
-          type="text"
-          class="form"
-          id="name"
-          placeholder="example"
-          name="name"
-        />
-      </div>
-      <div class="email">
-        <h3>Email:</h3>
-        <i class="fa-solid fa-envelope"></i>
-        <input
-          type="text"
-          class="form"
-          placeholder="example@example.com"
-          id="email"
-          name="email"
-        />
-      </div>
-      <div class="password">
-        <h3>Password:</h3>
-        <i class="fa-solid fa-lock"></i>
-        <input type="password" class="form" id="password" name="password" />
-      </div>
-{% endblock %}
- {% block btn %}
-      <a href="{{ url_for('register') }}">
-        <button>Sign up</button>
-      </a>
-{% endblock %}
-{% block status %}
-      <p>
-        Already a member?
-        <a href="{{ url_for('login') }}" class="login-acc-link">Log in</a>
-      </p>
-{% endblock %}
+<form action="" method="post">
+  {{ form.hidden_tag() }}
+  <div class="name">
+    {{form.username.label(class="label")}}
+    <br />
+    <i class="fa-solid fa-user"></i>
+     {{form.username(class="form",placeholder="example")}} 
+     {% if form.username.errors %} 
+     <div class="invalid-feedback">
+       {% for error in form.username.errors %}
+       <span>{{error}}</span>
+       {% endfor %}
+     </div>
+     {% endif %}
+  </div>
 
+  <div class="email">
+    {{form.email.label(class="label")}}
+    <br />
+    <i class="fa-solid fa-envelope"></i>
+    {{form.email(class="form",placeholder="example@example.com")}} 
+    {% if form.email.errors %}
+    <div class="invalid-feedback">
+      {% for error in form.email.errors %}
+        <span>{{error}}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="password">
+    {{form.password.label(class="label")}}
+    <br />
+    <i class="fa-solid fa-lock"></i>
+    {{form.password(class="form")}}
+    {% if form.password.errors %}
+        <div class="invalid-feedback">
+          {% for error in form.password.errors %}
+            <span>{{error}}</span>
+          {% endfor %}
+        </div>
+    {% endif %}
+  </div>
+
+  <div class="confirm-password">
+    {{form.confirm_password.label(class="label")}}
+    <br />
+    <i class="fa-solid fa-lock"></i>
+    {{form.confirm_password(class="form")}}
+    {% if form.confirm_password.errors %}
+        <div class="invalid-feedback">
+          {% for error in form.confirm_password.errors %}
+            <span>{{error}}</span>
+          {% endfor %}
+        </div>
+    {% endif %}
+  </div>
+  {% endblock %}
+  {% block btn %}
+  <div>
+    {{form.submit(class="button")}}
+  </div>
+</form>
+{% endblock %} 
+{% block status %}
+<p>
+  Already a member?
+  <a href="{{ url_for('login') }}" class="login-acc-link">Log in</a>
+</p>
+{% endblock %}

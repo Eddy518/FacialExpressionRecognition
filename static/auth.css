@@ -7,7 +7,7 @@
   max-width: 500px;
 }
 .wrapper {
-  height: 600px;
+  height: 630px;
   border: 2px solid salmon;
   padding: 14px;
   display: flex;
@@ -49,6 +49,17 @@
 .heading > h2 {
   color: #efeaed;
 }
+/** Lbl */
+.label {
+  color: #efeaed;
+  font-weight: bold;
+  font-size: large;
+  margin-bottom: 5px !important;
+}
+.separator {
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
 .form-group {
   display: flex;
   align-items: stretch;
@@ -87,16 +98,17 @@
   color: #efeaed;
   cursor: pointer;
 }
-.signup-login-button button {
+.signup-login-button .button {
   outline: none;
   color: #efeaed;
   background-color: #8fafdf;
   height: 56px;
   width: 100%;
 }
-.signup-login-button button:hover {
+.signup-login-button .button:hover {
   background-color: #6a7f9e;
 }
+.button,
 button,
 input[type="submit"],
 input[type="reset"] {
@@ -121,8 +133,10 @@ input[type="reset"] {
 .back-btn > a:hover {
   text-decoration: underline;
 }
-.password {
-  margin-top: 30px;
+.password,
+.confirm-password,
+.email {
+  margin-top: 26px;
 }
 
 .input-container input {
@@ -150,4 +164,11 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
+}
+
+.invalid-feedback {
+  font-weight: bold;
+  color: #b7212d;
+  margin-left: 10px;
+  margin-top: 5px;
 }
