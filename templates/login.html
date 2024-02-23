@@ -15,11 +15,15 @@ block paragraph %} Login using your <span>Email</span> and
     <i class="fa-solid fa-lock"></i>
     {{form.password(class="form")}}
   </div>
-   {% if (form.email.errors != null) or (form.password.errors != null) %} 
-    <div class="invalid-feedback">
-      <span>Invalid Credentials</span>
-    </div>
-  {% endif %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category,message in messages %}            
+                  <div class="alert alert-{{category}}">
+                    {{message}}
+                  </div>
+              {% endfor %}
+            {% endif %}
+            {% endwith %}
   {% endblock input %} {% block btn %}
   <div>{{form.submit(class="button")}}</div>
 </form>

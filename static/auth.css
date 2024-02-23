@@ -165,7 +165,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
-
+.alert-fail,
 .invalid-feedback {
   font-weight: bold;
   color: #b7212d;

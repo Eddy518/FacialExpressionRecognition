@@ -18,6 +18,8 @@ def login():
         if form.email.data == 'admin@blog.com' and form.password.data == "password":
             flash('You have been logged in!','success')
             return redirect(url_for('home'))
+        else:
+            flash('Login failed! Invalid credentials!','fail')
     return render_template('login.html',title='Log In',forgot = True,form=form)
 
 @app.route('/register',methods=('GET','POST'))
