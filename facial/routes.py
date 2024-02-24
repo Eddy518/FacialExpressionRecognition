@@ -1,9 +1,6 @@
-from flask import Flask,render_template,url_for, flash, redirect
-from form import RegistrationForm,LoginForm
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] ='927af1257ba908bea162f42b2011047f'
-
+from flask import render_template,url_for, flash, redirect
+from facial import app
+from facial.form import RegistrationForm,LoginForm
 forgot = False
 
 @app.route('/home')
@@ -32,5 +29,4 @@ def register():
         return redirect(url_for('home'))
     return render_template('sign-up.html',title='Sign Up',forgot = False,form=form)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
