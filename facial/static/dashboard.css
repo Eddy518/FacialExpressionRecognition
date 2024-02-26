@@ -1,0 +1,55 @@
+.dashboard-container {
+  /* border: 2px solid maroon; */
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dashboard-logo {
+  /* border: 2px solid greenyellow; */
+  width: 100%;
+  flex: 1;
+}
+.notice {
+  display: flex;
+  gap: 12px;
+}
+.notice {
+  /* border: 2px solid salmon; */
+  padding: 14px;
+  width: fit-content;
+  gap: 5px;
+  padding: 9px;
+  justify-content: center;
+  font-weight: bold;
+}
+.video,
+.controls,
+.notice {
+  /* From https://css.glass */
+  background: rgba(50, 54, 59, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.2px);
+  -webkit-backdrop-filter: blur(9.2px);
+  border: 1px solid rgba(50, 54, 59, 0.53);
+}
+.note,
+.danger-icon {
+  color: #de0b1d;
+}
+.settings {
+  color: #911313;
+}
+.video {
+  /* border: 2px solid rosybrown; */
+}
+.interface {
+  display: flex;
+  gap: 30px;
+}
+.controls {
+  width: 420px;
+  height: 560px;
+  /* border: 2px solid blueviolet; */
+}

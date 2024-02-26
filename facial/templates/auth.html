@@ -11,6 +11,7 @@
       <h2>{% block heading %}{% endblock %}</h2>
       <p>{% block paragraph %}{% endblock %}</p>
     </div>
+    {% block statement %}{% endblock %}
     <div class="input-container">{% block input %} {% endblock %}</div>
     {% if forgot == True %}
     <div class="forgot-password">

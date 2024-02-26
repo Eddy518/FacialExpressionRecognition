@@ -1,27 +1,44 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Facial Expression Recognition</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="index.js" defer></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="vid-wrapper">
-        <video id="vid"></video>
-      </div>
-      <div id="wrapper">
-        <h2>Facial Expression Recognition Menu</h2>
-        <input type="file" id="imageInput" accept="image/*" />
-        <button id="cameraButton">Use Camera</button>
-        <button id="metricsButton">Metrics</button>
-        <button id="uploadButton" onclick="uploadImage()">
-          Upload <span>&#8593;</span>
-        </button>
-        <div id="metrics"></div>
-      </div>
+{% extends"layout.html" %} {% block content %}
+<div class="container dashboard-container">
+  <div class="logo dashboard-logo">
+    <a href="{{ url_for('home') }}" class="logo">
+      <img
+        src="{{url_for('static',filename='assets/logo.jpg')}}"
+        alt="logo"
+        width="60"
+        height="60"
+      />
+      <h2 class="heading">Facial Expression Recognition</h2>
+    </a>
+
+    <div class="links">
+      {% if current_user.is_authenticated %}
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('logout') }}" id="logout">Logout</a>
+      {% else %}
+      <a href="{{ url_for('register') }}">Sign up</a>
+      <a href="{{ url_for('login') }}">Login</a>
+      {% endif %}
     </div>
-  </body>
-</html>
+  </div>
+  <div class="notice">
+    <div class="danger-icon">
+      <i class="fa-solid fa-circle-exclamation"></i>
+    </div>
+    <div>
+      <span class="note">
+        <strong>Note:</strong> You need to enable your webcam first.</span
+      >
+      <span class="settings">
+        Visit the settings page of your browser and click enable
+      </span>
+    </div>
+  </div>
+  <div class="interface">
+    <div class="video">
+      <video id="video" width="620" height="560" autoplay muted></video>
+    </div>
+    <div class="controls"></div>
+  </div>
+</div>
+{% endblock content %}
