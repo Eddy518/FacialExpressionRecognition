@@ -22,10 +22,14 @@
     <link rel="stylesheet" href="{{url_for('static',filename='auth.css')}}" />
     <link
       rel="stylesheet"
+      href="{{url_for('static',filename='account.css')}}"
+    />
+    <link
+      rel="stylesheet"
       href="{{url_for('static',filename='dashboard.css')}}"
     />
-    <script src="{{url_for('static',filename='script.js')}}" defer></script>
-    <script src="video.js" defer></script>
+    {% if url_for('home') %} {% block footerScript %} {% endblock %} {% endif %}
+    {% block dashboard %} {% endblock %}
   </head>
   <body>
     {% block content %} {% endblock %}

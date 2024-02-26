@@ -1,4 +1,8 @@
-{% extends "layout.html" %} {% block content %}
+{% extends "layout.html" %} 
+{% block footerScript %}
+    <script src="{{url_for('static',filename='script.js')}}" defer></script>
+{% endblock footerScript %}
+{% block content %}
 <div class="container">
   <div class="nav">
     <div class="logo">
@@ -49,12 +53,15 @@
         We do not store your image or video data. We only keep logs of your
         facial expressions results.<br />
         We value your privacy 👌.<br />
+        {% if not current_user.is_authenticated %}
         What are you waiting for? <br />
         <a href="{{ url_for('register') }}" class="sign"> Sign up </a>now and experience our
         model at its finest.
+        {% endif %}
       </p>
       <img src="{{ url_for('static',filename='assets/excited_person.jpg')}}" alt="happy_face" width="300" />
     </div>
+    {% if not current_user.is_authenticated %}
     <div class="signing-container">
       <div class="sign-text">
         <h3>Try it Now!</h3>
@@ -66,6 +73,7 @@
         </a>
       </div>
     </div>
+    {% endif %}
   </div>
   <div class="footer">
     <div class="copyright">

@@ -23,11 +23,16 @@
   justify-content: center;
   font-weight: bold;
 }
-.video,
+.notice {
+  background: rgba(50, 54, 59, 0.05);
+}
+.controls {
+  background: #111927;
+}
 .controls,
 .notice {
   /* From https://css.glass */
-  background: rgba(50, 54, 59, 0.05);
+  /* background: rgba(50, 54, 59, 0.05); */
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(9.2px);
@@ -42,7 +47,7 @@
   color: #911313;
 }
 .video {
-  /* border: 2px solid rosybrown; */
+  border: 2px solid rosybrown;
 }
 .interface {
   display: flex;
@@ -52,4 +57,42 @@
   width: 420px;
   height: 560px;
   /* border: 2px solid blueviolet; */
+}
+.controls > h4 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 28px;
+  color: rosybrown;
+  margin-top: 9px;
+  margin-bottom: 12px;
+}
+.controls h3 {
+  font-weight: bold;
+  font-size: 17px;
+  color: rosybrown;
+}
+.control-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 18px;
+}
+.controls .btn-ctrl:hover {
+  background-color: #216063;
+}
+.controls .btn-ctrl,
+.controls input {
+  width: 250px;
+  padding: 14px;
+  font-weight: bold;
+  background-color: #165a5e;
+  color: rosybrown;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+.controls form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
