@@ -1,12 +1,8 @@
 {% extends "auth.html" %}
 <div class="profile-wrapper">
   <div class="main">
-    {% block heading %} Update Account {% endblock heading %} {% block statement
+    {% block heading %} Update Account Details{% endblock heading %} {% block statement
     %}
-    <div class="media-body">
-      <h2 class="account-heading">{{current_user.username}}</h2>
-      <p class="text-secondary">{{current_user.email}}</p>
-    </div>
     {% endblock statement %} {% block input %}
     <form action="" method="post">
       {{ form.hidden_tag() }}
@@ -23,6 +19,7 @@
         </div>
         {% endif %}
       </div>
+      
       <div class="email">
         {{form.email.label(class="label")}}
         <br />
@@ -36,7 +33,52 @@
         </div>
         {% endif %}
       </div>
-      {% endblock input %} {% block btn %}
+      
+      <div class="current_password">
+        {{form.current_password.label(class="label")}}
+        <br />
+        <div class="password-info">
+          <small>(Required to change your password)</small>
+        </div>
+        <i class="fa-solid fa-lock"></i>
+        {{form.current_password(class="form")}}
+        {% if form.current_password.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.current_password.errors %}
+                <span>{{error}}</span>
+              {% endfor %}
+            </div>
+        {% endif %}
+      </div>
+
+      <div class="password">
+        {{form.password.label(class="label")}}
+        <br />
+        <i class="fa-solid fa-lock"></i>
+        {{form.password(class="form")}}
+        {% if form.password.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.password.errors %}
+                <span>{{error}}</span>
+              {% endfor %}
+            </div>
+        {% endif %}
+      </div>
+
+      <div class="confirm-password">
+        {{form.confirm_password.label(class="label")}}
+        <br />
+        <i class="fa-solid fa-lock"></i>
+        {{form.confirm_password(class="form")}}
+        {% if form.confirm_password.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.confirm_password.errors %}
+                <span>{{error}}</span>
+              {% endfor %}
+            </div>
+        {% endif %}
+      </div>     
+       {% endblock input %} {% block btn %}
       <div>{{form.submit(class="button")}}</div>
     </form>
     {% endblock btn %}

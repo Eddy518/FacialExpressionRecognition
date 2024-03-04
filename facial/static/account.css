@@ -2,3 +2,16 @@
   max-width: 500px;
   display: flex;
 }
+.current_password {
+  margin-top: 22px;
+}
+.current_password small {
+  color: moccasin;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 14px;
+  padding: 5px;
+}
+.password-info {
+  margin-bottom: 8px;
+}
