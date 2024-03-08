@@ -20,6 +20,7 @@
     />
     <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
     <link rel="stylesheet" href="{{url_for('static',filename='auth.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename='error-messages.css')}}">
     <link
       rel="stylesheet"
       href="{{url_for('static',filename='account.css')}}"
@@ -28,10 +29,26 @@
       rel="stylesheet"
       href="{{url_for('static',filename='dashboard.css')}}"
     />
-    {% if url_for('home') %} {% block footerScript %} {% endblock %} {% endif %}
+    <script src="{{url_for('static',filename='script.js')}}" defer></script>
     {% block dashboard %} {% endblock %}
   </head>
   <body>
+<div>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category,message in messages %}            
+      <div class="error-message" id="error-message" >
+          <div class="alert alert-{{category}}">
+            {{message}}
+          </div>
+          <div class="close-icon" id="close-icon">
+              &#10005;          
+          </div>
+      </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+</div>
     {% block content %} {% endblock %}
   </body>
 </html>

@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
- /* color-scheme: dark; */
+  /* color-scheme: dark; */
   background-color: #111927;
 }
 .container {
@@ -170,4 +170,39 @@ hr {
 .sign {
   color: wheat;
   text-decoration: none;
+}
+
+.error-message {
+  min-width: 320px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 34px;
+  border: 2px solid pink;
+  margin: 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.close-icon {
+  border: 2px solid wheat;
+  padding: 8px;
+  color: #a32435;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-icon:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.alert-fail {
+  font-weight: bold;
+  text-align: center;
+  color: #b7212d;
 }
