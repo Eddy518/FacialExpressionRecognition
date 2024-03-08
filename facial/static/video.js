@@ -49,7 +49,6 @@ const videoContainer = document.querySelector(".video");
       .then((stream) => {
         window.localStream = stream;
         video.srcObject = stream;
-        audio.srcObject = stream;
       })
       .catch((err) => {
         console.log(err);

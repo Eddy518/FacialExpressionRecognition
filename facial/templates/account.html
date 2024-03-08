@@ -1,64 +1,65 @@
-{% extends "auth.html" %}
-<div class="profile-wrapper">
-  <div class="main">
-    {% block heading %} Update Account Details{% endblock heading %} {% block statement
-    %}
-    {% endblock statement %} {% block input %}
-    <form action="" method="post">
+<div class="email-block">
+ <form action="" method="post">
       {{ form.hidden_tag() }}
-      <div class="name">
-        {{form.username.label(class="label")}}
-        <br />
-        <i class="fa-solid fa-user"></i>
-        {{form.username(class="form",placeholder="example")}} {% if
-        form.username.errors %}
-        <div class="invalid-feedback">
-          {% for error in form.username.errors %}
-          <span>{{error}}</span>
-          {% endfor %}
+        <fieldset>
+        <legend>Update email and username</legend>
+        <div class="name">
+          {{form.username.label(class="label")}}
+          <br />
+          <i class="fa-solid fa-user"></i>
+          {{form.username(class="form",placeholder="example")}} {% if
+          form.username.errors %}
+          <div class="invalid-feedback">
+            {% for error in form.username.errors %}
+            <span>{{error}}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
         </div>
-        {% endif %}
-      </div>
       
-      <div class="email">
-        {{form.email.label(class="label")}}
-        <br />
-        <i class="fa-solid fa-envelope"></i>
-        {{form.email(class="form",placeholder="example@example.com")}} {% if
-        form.email.errors %}
-        <div class="invalid-feedback">
-          {% for error in form.email.errors %}
-          <span>{{error}}</span>
-          {% endfor %}
+        <div class="email">
+          {{form.email.label(class="label")}}
+          <br />
+          <i class="fa-solid fa-envelope"></i>
+          {{form.email(class="form",placeholder="example@example.com")}} {% if
+          form.email.errors %}
+          <div class="invalid-feedback">
+            {% for error in form.email.errors %}
+            <span>{{error}}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
         </div>
-        {% endif %}
-      </div>
-      
+      <div>{{form.submit(class="button" ,id="profile")}}</div>
+    </form></div>
+<div class="password-block">
+<form action="" method="post">
+      {{ password_form.hidden_tag() }}
       <div class="current_password">
-        {{form.current_password.label(class="label")}}
-        <br />
-        <div class="password-info">
-          <small>(Required to change your password)</small>
+          {{password_form.current_password.label(class="label")}}
+          <br />
+          <div class="password-info">
+            <small>(Required to change your password)</small>
+          </div>
+          <i class="fa-solid fa-lock"></i>
+          {{password_form.current_password(class="password_form")}}
+          {% if password_form.current_password.errors %}
+              <div class="invalid-feedback">
+                {% for error in password_form.current_password.errors %}
+                  <span>{{error}}</span>
+                {% endfor %}
+              </div>
+          {% endif %}
         </div>
-        <i class="fa-solid fa-lock"></i>
-        {{form.current_password(class="form")}}
-        {% if form.current_password.errors %}
-            <div class="invalid-feedback">
-              {% for error in form.current_password.errors %}
-                <span>{{error}}</span>
-              {% endfor %}
-            </div>
-        {% endif %}
-      </div>
-
+        </fieldset>
       <div class="password">
-        {{form.password.label(class="label")}}
+        {{password_form.password.label(class="label")}}
         <br />
         <i class="fa-solid fa-lock"></i>
-        {{form.password(class="form")}}
-        {% if form.password.errors %}
+        {{password_form.password(class="password_form")}}
+        {% if password_form.password.errors %}
             <div class="invalid-feedback">
-              {% for error in form.password.errors %}
+              {% for error in password_form.password.errors %}
                 <span>{{error}}</span>
               {% endfor %}
             </div>
@@ -66,24 +67,19 @@
       </div>
 
       <div class="confirm-password">
-        {{form.confirm_password.label(class="label")}}
+        {{password_form.confirm_password.label(class="label")}}
         <br />
         <i class="fa-solid fa-lock"></i>
-        {{form.confirm_password(class="form")}}
-        {% if form.confirm_password.errors %}
+        {{password_form.confirm_password(class="password_form")}}
+        {% if password_form.confirm_password.errors %}
             <div class="invalid-feedback">
-              {% for error in form.confirm_password.errors %}
+              {% for error in password_form.confirm_password.errors %}
                 <span>{{error}}</span>
               {% endfor %}
             </div>
         {% endif %}
-      </div>     
-       {% endblock input %} {% block btn %}
-      <div>{{form.submit(class="button")}}</div>
-    </form>
-    {% endblock btn %}
-  </div>
-  {% block links %}
-  <div class="side">Link Hey</div>
-  {% endblock links %}
+      </div>    
+      <div>{{password_form.submit(class="button",id="password")}}</div>
+  </form>
 </div>
+  

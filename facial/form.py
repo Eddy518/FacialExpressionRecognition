@@ -34,18 +34,14 @@ class LoginForm(FlaskForm):
     
     submit = SubmitField('Log in')
 
+
+
 class UpdateAccountForm(FlaskForm):
     username = StringField('UserName:',validators=[DataRequired(),Length(min=2,max=15)])
     
     email = StringField("Email:",validators=[DataRequired(),Email()])
 
-    current_password = PasswordField('Current Password:',validators=[DataRequired(),Length(min=6)])
-
-    password = PasswordField('New Password:',validators=[Length(min=6)])
-
-    confirm_password = PasswordField('Confirm Password:',validators=[Length(min=6),EqualTo('password')])
-
-    submit = SubmitField('Update')
+    submit = SubmitField('Update Profile')
     
     def validate_username(self,username):
         if current_user.username != username.data:
@@ -59,6 +55,15 @@ class UpdateAccountForm(FlaskForm):
             if user:
                 raise ValidationError('Email already exists.')
             
+class UpdatePasswordForm(FlaskForm):
+    current_password = PasswordField('Current Password:',validators=[DataRequired(),Length(min=6)])
+
+    password = PasswordField('New Password:',validators=[Length(min=6)])
+
+    confirm_password = PasswordField('Confirm Password:',validators=[Length(min=6),EqualTo('password')])
+
+    submit = SubmitField('Update Password')
+
     # check if user inputs the right current password before updating their password
     def validate_current_password(self,current_password):
         if not bcrypt.check_password_hash(current_user.password,current_password.data):

@@ -1,7 +1,7 @@
 from flask import render_template,url_for, flash, redirect, request
 from flask_mail import Message
 from facial import app,bcrypt, db, mail
-from facial.form import RegistrationForm,LoginForm, RequestResetForm, ResetPasswordForm, UpdateAccountForm
+from facial.form import RegistrationForm,LoginForm, RequestResetForm, ResetPasswordForm, UpdateAccountForm, UpdatePasswordForm
 from facial.models import User
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -48,24 +48,40 @@ def register():
 def dashboard():
     return render_template('dashboard.html',title='Dashboard')
 
+def print_user_data(form):
+    if request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+
 @app.route('/account',methods=('GET','POST'))
 @app.route('/settings',methods=('GET','POST'))
 @app.route('/profile',methods=('GET','POST'))
 @login_required
 def account():
     form = UpdateAccountForm()
+    print_user_data(form)
+    password_form = UpdatePasswordForm()
     if form.validate_on_submit():    
         current_user.username = form.username.data
         current_user.email = form.email.data
-        hashed_password=bcrypt.generate_password_hash(form.password.data)
-        current_user.password = hashed_password
         db.session.commit()
         flash("Your account has been updated!",'success')
+        print("test if in profile")
         return redirect(url_for('account'))
-    elif request.method == 'GET':
-        form.username.data = current_user.username
-        form.email.data = current_user.email
-    return render_template('account.html',title='Profile',form=form)    
+
+    if password_form.validate_on_submit():    
+        hashed_password=bcrypt.generate_password_hash(password_form.password.data)
+        current_user.password = hashed_password
+        db.session.commit()
+        print("test if in password")
+
+        return redirect(url_for('account'))
+    else:
+        print("test else in password")
+        render_template('account.html',title='Profile',form=form,password_form=password_form)
+
+
+    return render_template('account.html',title='Profile',form=form,password_form=password_form)    
 
 def send_reset_email(user):
     token = user.get_reset_token()
