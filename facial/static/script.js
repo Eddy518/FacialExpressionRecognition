@@ -9,4 +9,4 @@ copyrightYear.textContent = (function () {
 
 closeErrorIcon.addEventListener('click',()=>  errorMessageContainer.style.cssText="display:none;transition: opacity 200ms, display 200ms;opacity:0")
 
-setTimeout(() => errorMessageContainer.style.cssText="display:none;" ,3000)
+// setTimeout(() => errorMessageContainer.style.cssText="display:none;" ,3000)

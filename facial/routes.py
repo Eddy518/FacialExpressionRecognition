@@ -39,7 +39,7 @@ def register():
         user = User(username=form.username.data,email=form.email.data,password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        # flash(f'Account created for {form.username.data}!','success')
+        flash(f'Account created for {form.username.data}!','success')
         return redirect(url_for('login'))
     return render_template('sign-up.html',title='Sign Up',forgot = False,form=form)
 
@@ -62,12 +62,15 @@ def account():
     print_user_data(form)
     password_form = UpdatePasswordForm()
     if form.validate_on_submit():    
-        current_user.username = form.username.data
-        current_user.email = form.email.data
-        db.session.commit()
-        # flash("Your account has been updated!",'success')
-        print("test if in profile")
-        return redirect(url_for('account'))
+            if current_user.username==form.username.data and current_user.email==form.email.data:
+                return redirect(url_for('account'))
+            else:
+                current_user.username = form.username.data
+                current_user.email = form.email.data
+                db.session.commit()
+                flash("Your account has been updated!",'success')
+                print("test if in profile")
+                return redirect(url_for('account'))
 
     if password_form.validate_on_submit():    
         hashed_password=bcrypt.generate_password_hash(password_form.password.data)
@@ -118,7 +121,7 @@ def reset_token(token):
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user.password = hashed_password
         db.session.commit()
-        # flash('Password successfully updated! You can now log in','success')
+        flash('Password successfully updated! You can now log in','success')
         return redirect(url_for('login'))
     return render_template('reset_token.html',title='Reset Password',form=form)
 

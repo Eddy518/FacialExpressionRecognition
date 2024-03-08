@@ -177,8 +177,9 @@ hr {
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 34px;
-  border: 2px solid pink;
+  padding: 14px;
+  border: 2px solid #8fafdf;
+  border-radius: 14px;
   margin: 40px;
 
   display: flex;
@@ -188,9 +189,11 @@ hr {
 }
 
 .close-icon {
-  border: 2px solid wheat;
+  border: 1px solid #8fafdf;
+  border-radius: 47%;
   padding: 8px;
   color: #a32435;
+  background-color: lightgrey;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -201,8 +204,14 @@ hr {
   color: red;
 }
 
-.alert-fail {
+.alert {
   font-weight: bold;
   text-align: center;
+  font-size: 21px;
+}
+.alert-fail {
   color: #b7212d;
+}
+.alert-success {
+  color: forestgreen;
 }

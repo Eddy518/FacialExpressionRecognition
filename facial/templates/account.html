@@ -1,8 +1,12 @@
+{% extends "auth.html" %}
+{% block alt %}
+Account Settings
+{% endblock alt %}
+{% block input %}
 <div class="email-block">
+<h3>Update profile:</h3>
  <form action="" method="post">
       {{ form.hidden_tag() }}
-        <fieldset>
-        <legend>Update email and username</legend>
         <div class="name">
           {{form.username.label(class="label")}}
           <br />
@@ -30,9 +34,10 @@
           </div>
           {% endif %}
         </div>
-      <div>{{form.submit(class="button" ,id="profile")}}</div>
+      <div>{{form.submit(class="update-btn" ,id="profile")}}</div>
     </form></div>
 <div class="password-block">
+<h3>Update Password:</h3>
 <form action="" method="post">
       {{ password_form.hidden_tag() }}
       <div class="current_password">
@@ -42,7 +47,7 @@
             <small>(Required to change your password)</small>
           </div>
           <i class="fa-solid fa-lock"></i>
-          {{password_form.current_password(class="password_form")}}
+          {{password_form.current_password(class="form")}}
           {% if password_form.current_password.errors %}
               <div class="invalid-feedback">
                 {% for error in password_form.current_password.errors %}
@@ -51,12 +56,11 @@
               </div>
           {% endif %}
         </div>
-        </fieldset>
       <div class="password">
         {{password_form.password.label(class="label")}}
         <br />
         <i class="fa-solid fa-lock"></i>
-        {{password_form.password(class="password_form")}}
+        {{password_form.password(class="form")}}
         {% if password_form.password.errors %}
             <div class="invalid-feedback">
               {% for error in password_form.password.errors %}
@@ -70,7 +74,7 @@
         {{password_form.confirm_password.label(class="label")}}
         <br />
         <i class="fa-solid fa-lock"></i>
-        {{password_form.confirm_password(class="password_form")}}
+        {{password_form.confirm_password(class="form")}}
         {% if password_form.confirm_password.errors %}
             <div class="invalid-feedback">
               {% for error in password_form.confirm_password.errors %}
@@ -79,7 +83,8 @@
             </div>
         {% endif %}
       </div>    
-      <div>{{password_form.submit(class="button",id="password")}}</div>
+      <div>{{password_form.submit(class="update-btn",id="password")}}</div>
   </form>
 </div>
+{% endblock input %}
   
