@@ -189,8 +189,6 @@ hr {
 }
 
 .close-icon {
-  border: 1px solid #8fafdf;
-  border-radius: 47%;
   padding: 8px;
   color: #a32435;
   background-color: lightgrey;
@@ -213,5 +211,11 @@ hr {
   color: #b7212d;
 }
 .alert-success {
-  color: forestgreen;
+  color: #a32512;
+}
+.alert-info {
+  color: #a36624;
+}
+.alert-warning {
+  color: #c49812;
 }

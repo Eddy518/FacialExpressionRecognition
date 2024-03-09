@@ -21,6 +21,7 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password,form.password.data):
             login_user(user)
+            flash(f'Welcome back {user.username}!','success')
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('dashboard'))
         else:
@@ -68,7 +69,7 @@ def account():
                 current_user.username = form.username.data
                 current_user.email = form.email.data
                 db.session.commit()
-                flash("Your account has been updated!",'success')
+                flash("Your account has been updated successfully!",'success')
                 print("test if in profile")
                 return redirect(url_for('account'))
 
@@ -76,6 +77,7 @@ def account():
         hashed_password=bcrypt.generate_password_hash(password_form.password.data)
         current_user.password = hashed_password
         db.session.commit()
+        flash("Your account has been updated successfully!",'success')
         print("test if in password")
 
         return redirect(url_for('account'))
@@ -92,7 +94,7 @@ def send_reset_email(user):
 
     msg.body = f'''Visit the following link to reset your password:
 {url_for('reset_token',token=token,_external= True)}
-If you did not make this request then simply ignore this email and no changes will be made
+If you did not make this request then simply ignore this email and no changes will be made.
      '''
     mail.send(msg)
 
@@ -104,7 +106,7 @@ def request_reset():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         send_reset_email(user)
-        # flash('An email has been sent to you with the instructions','info')
+        flash('An email has been sent to you with the reset instructions!','info')
         return redirect(url_for('login'))
     return render_template('request_reset.html',title='Reset Password',form=form)
 
@@ -114,14 +116,14 @@ def reset_token(token):
         return redirect(url_for('dashboard'))
     user = User.verify_reset_token(token)
     if not user:
-        # flash('That is an invalid or expired token','warning')
+        flash('Invalid or expired token! Please re-try again.','warning')
         return redirect(url_for('request_reset'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user.password = hashed_password
         db.session.commit()
-        flash('Password successfully updated! You can now log in','success')
+        flash('Password successfully updated! You can now log in!','success')
         return redirect(url_for('login'))
     return render_template('reset_token.html',title='Reset Password',form=form)
 
