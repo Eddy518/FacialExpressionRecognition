@@ -29,7 +29,7 @@
       rel="stylesheet"
       href="{{url_for('static',filename='dashboard.css')}}"
     />
-    <script src="{{url_for('static',filename='script.js')}}" defer></script>
+    {% block script %} {% endblock %}
     {% block dashboard %} {% endblock %}
   </head>
   <body>

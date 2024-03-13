@@ -33,6 +33,8 @@
 //   };
 // });
 const videoContainer = document.querySelector(".video");
+
+let cameraOnBool = false;
 (function () {
   const video = document.querySelector("#video");
 
@@ -41,6 +43,7 @@ const videoContainer = document.querySelector(".video");
 
   //Capture Video
   captureVideoButton.onclick = function () {
+    document.getElementById('fileUpload').disabled = true;
     navigator.mediaDevices
       .getUserMedia({
         audio: true,
@@ -56,8 +59,10 @@ const videoContainer = document.querySelector(".video");
   };
 
   stopVideoButton.onclick = function () {
+    cameraOnBool = false;
     localStream.getVideoTracks()[0].stop();
     video.src = "";
     location.reload();
   };
 })();
+
