@@ -42,7 +42,23 @@ let cameraOnBool = false;
   const stopVideoButton = document.querySelector("#stop-camera");
 
   //Capture Video
-  captureVideoButton.onclick = function () {
+  // captureVideoButton.onclick = function () {
+  //   document.getElementById('fileUpload').disabled = true;
+  //   navigator.mediaDevices
+  //     .getUserMedia({
+  //       audio: true,
+  //       video: true,
+  //     })
+  //     .then((stream) => {
+  //       window.localStream = stream;
+  //       video.srcObject = stream;
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+captureVideoButton.addEventListener('click',()=>{
     document.getElementById('fileUpload').disabled = true;
     navigator.mediaDevices
       .getUserMedia({
@@ -55,9 +71,8 @@ let cameraOnBool = false;
       })
       .catch((err) => {
         console.log(err);
-      });
-  };
-
+      });  
+  },{once:true});
   stopVideoButton.onclick = function () {
     cameraOnBool = false;
     localStream.getVideoTracks()[0].stop();

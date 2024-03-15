@@ -47,7 +47,10 @@ def register():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html',title='Dashboard')
+    if current_user.is_authenticated:
+        return render_template('dashboard.html',title='Dashboard')
+    else:
+        return redirect(url_for('login'))
 
 def print_user_data(form):
     if request.method == 'GET':
