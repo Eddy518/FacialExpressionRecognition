@@ -46,8 +46,10 @@
 .settings {
   color: #911313;
 }
-.video {
+.canvas {
   border: 2px solid rosybrown;
+  width: 620;
+  height: 560px;
 }
 .interface {
   display: flex;

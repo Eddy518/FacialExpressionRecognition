@@ -33,6 +33,7 @@
 //   };
 // });
 const videoContainer = document.querySelector(".video");
+const canvas = document.querySelector("#canvas");
 
 let cameraOnBool = false;
 (function () {
@@ -41,38 +42,33 @@ let cameraOnBool = false;
   const captureVideoButton = document.querySelector("#start-camera");
   const stopVideoButton = document.querySelector("#stop-camera");
 
-  //Capture Video
-  // captureVideoButton.onclick = function () {
-  //   document.getElementById('fileUpload').disabled = true;
-  //   navigator.mediaDevices
-  //     .getUserMedia({
-  //       audio: true,
-  //       video: true,
-  //     })
-  //     .then((stream) => {
-  //       window.localStream = stream;
-  //       video.srcObject = stream;
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-captureVideoButton.addEventListener('click',()=>{
-    document.getElementById('fileUpload').disabled = true;
-    navigator.mediaDevices
-      .getUserMedia({
-        audio: true,
-        video: true,
-      })
-      .then((stream) => {
-        window.localStream = stream;
-        video.srcObject = stream;
-      })
-      .catch((err) => {
-        console.log(err);
-      });  
-  },{once:true});
+  captureVideoButton.addEventListener(
+    "click",
+    () => {
+      document.getElementById("fileUpload").disabled = true;
+      // const videoElement = document.createElement('video');
+      // videoElement.style.width = "620";
+      // videoElement.style.height = "560";
+      // videoElement.id = "video";
+      // videoElement.autoplay = true;
+      // videoElement.muted = true;
+      // console.log(videoElement);
+      // canvas.appendChild(videoElement);
+      navigator.mediaDevices
+        .getUserMedia({
+          audio: false,
+          video: true,
+        })
+        .then((stream) => {
+          window.localStream = stream;
+          video.srcObject = stream;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    { once: true },
+  );
   stopVideoButton.onclick = function () {
     cameraOnBool = false;
     localStream.getVideoTracks()[0].stop();
@@ -80,4 +76,3 @@ captureVideoButton.addEventListener('click',()=>{
     location.reload();
   };
 })();
-

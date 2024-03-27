@@ -15,7 +15,7 @@ def home():
 @app.route('/login',methods=('GET','POST'))
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -23,7 +23,7 @@ def login():
             login_user(user)
             flash(f'Welcome back {user.username}!','success')
             next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('dashboard'))
+            return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
             flash('Login failed! Invalid credentials!','fail')
     return render_template('login.html',title='Log In',forgot = True,form=form)
@@ -33,7 +33,7 @@ def login():
 @app.route('/signup',methods=('GET','POST'))
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password=bcrypt.generate_password_hash(form.password.data)
@@ -43,14 +43,6 @@ def register():
         flash(f'Account created for {form.username.data}!','success')
         return redirect(url_for('login'))
     return render_template('sign-up.html',title='Sign Up',forgot = False,form=form)
-
-@app.route('/dashboard')
-@login_required
-def dashboard():
-    if current_user.is_authenticated:
-        return render_template('dashboard.html',title='Dashboard')
-    else:
-        return redirect(url_for('login'))
 
 def print_user_data(form):
     if request.method == 'GET':

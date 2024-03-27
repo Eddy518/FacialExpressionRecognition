@@ -1,8 +1,6 @@
-{% extends "layout.html" %} 
-{% block script %}
-    <script src="{{url_for('static',filename='script.js')}}" defer></script>
-{% endblock script %}
-{% block content %}
+{% extends "layout.html" %} {% block script %}
+<script src="{{url_for('static',filename='script.js')}}" defer></script>
+{% endblock script %} {% block content %}
 <div class="container">
   <div class="nav">
     <div class="logo">
@@ -18,14 +16,16 @@
     </div>
     <div class="links">
       {% if current_user.is_authenticated %}
-      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('account') }}">My Profile</a>
       <a href="{{ url_for('logout') }}" id="logout">Logout</a>
       {% else %}
-        <a href="{{ url_for('register') }}">Sign up</a>
-        <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('register') }}">Sign up</a>
+      <a href="{{ url_for('login') }}">Login</a>
       {% endif %}
     </div>
   </div>
+  <!--If user is not logged in -->
+  {% if not current_user.is_authenticated %}
   <div class="header">
     <p class="header-content">
       Introducing our Facial Expression Recognition model with enhanced accuracy
@@ -35,7 +35,11 @@
 
   <div class="main">
     <div class="section">
-      <img src="{{ url_for('static',filename='assets/happy_face.jpg')}}" alt="happy_face" width="300" />
+      <img
+        src="{{ url_for('static',filename='assets/happy_face.jpg')}}"
+        alt="happy_face"
+        width="300"
+      />
       <p>
         Imagine being able to understand emotions with just a glance. Our Facial
         Expression Recognition model makes it possible, with cutting-edge
@@ -53,15 +57,17 @@
         We do not store your image or video data. We only keep logs of your
         facial expressions results.<br />
         We value your privacy 👌.<br />
-        {% if not current_user.is_authenticated %}
-        What are you waiting for? <br />
-        <a href="{{ url_for('register') }}" class="sign"> Sign up </a>now and experience our
-        model at its finest.
-        {% endif %}
+        {% if not current_user.is_authenticated %} What are you waiting for?
+        <br />
+        <a href="{{ url_for('register') }}" class="sign"> Sign up </a>now and
+        experience our model at its finest. {% endif %}
       </p>
-      <img src="{{ url_for('static',filename='assets/excited_person.jpg')}}" alt="happy_face" width="300" />
+      <img
+        src="{{ url_for('static',filename='assets/excited_person.jpg')}}"
+        alt="happy_face"
+        width="300"
+      />
     </div>
-    {% if not current_user.is_authenticated %}
     <div class="signing-container">
       <div class="sign-text">
         <h3>Try it Now!</h3>
@@ -73,12 +79,53 @@
         </a>
       </div>
     </div>
-    {% endif %}
   </div>
-  <div class="footer">
-    <div class="copyright">
-      <p>&copy;<span id="year"></span></p>
+  {% else %}
+  <!-- If the user is logged in display the app -->
+  {% block display %}
+  <script src="{{url_for('static',filename='video.js')}}" defer></script>
+  {% endblock display %}
+  <div class="notice">
+    <div class="danger-icon">
+      <i class="fa-solid fa-circle-exclamation"></i>
+    </div>
+    <div>
+      <span class="note">
+        <strong>Note:</strong> You need to enable your webcam first.</span
+      >
+      <span class="settings">
+        Visit the settings page of your browser and click enable
+      </span>
     </div>
   </div>
+  <div class="interface">
+    <div class="canvas" id="canvas">
+      <video id="video" width="620" height="560" autoplay muted></video>
+    </div>
+    <div class="controls">
+      <h4>Controls</h4>
+      <div class="control-buttons">
+        <button id="start-camera" class="btn-ctrl">Use Camera</button>
+        <button id="stop-camera" class="btn-ctrl">Stop Camera</button>
+        <form>
+          <h3>Upload image or video file</h3>
+          <br />
+          <input
+            type="file"
+            id="fileUpload"
+            class="browse-file"
+            accept="image/*,video/*"
+          />
+        </form>
+        <button class="btn-ctrl">Export data</button>
+      </div>
+    </div>
+    {% endif %}
+    <div class="footer">
+      <div class="copyright">
+        <p>&copy;<span id="year"></span></p>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}
 </div>
-{% endblock content %}
