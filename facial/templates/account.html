@@ -1,12 +1,14 @@
-{% extends "auth.html" %}
-{% block alt %}
-Account Settings
-{% endblock alt %}
-{% block input %}
-<div class="email-block">
-<h3>Update profile:</h3>
- <form action="" method="post">
-      {{ form.hidden_tag() }}
+{% extends "layout.html"%} {% block content %}
+<div class="account-container">
+  <div class="account-heading">
+    {% block alt %} Account Settings {% endblock alt %}
+  </div>
+  <div class="account-wrapper">
+    <div class="email-block">
+    <div>
+      <h3 class="form-heading">Update Account profile:</h3>
+      <form action="" method="post">
+        {{ form.hidden_tag() }}
         <div class="name">
           {{form.username.label(class="label")}}
           <br />
@@ -20,7 +22,7 @@ Account Settings
           </div>
           {% endif %}
         </div>
-      
+
         <div class="email">
           {{form.email.label(class="label")}}
           <br />
@@ -34,57 +36,71 @@ Account Settings
           </div>
           {% endif %}
         </div>
-      <div>{{form.submit(class="update-btn" ,id="profile")}}</div>
-    </form></div>
-<div class="password-block">
-<h3>Update Password:</h3>
-<form action="" method="post">
-      {{ password_form.hidden_tag() }}
-      <div class="current_password">
+    </div>
+        <div>
+          <div>{{form.submit(class="update-btn" ,id="profile")}}</div>
+        </div>
+      </form>
+    </div>
+    <div class="sep"></div>
+    <div class="password-block">
+    <div>
+      <h3 class="form-heading">Update Account Password:</h3>
+      <form action="" method="post">
+        {{ password_form.hidden_tag() }}
+        <div class="current_password">
           {{password_form.current_password.label(class="label")}}
           <br />
           <div class="password-info">
             <small>(Required to change your password)</small>
           </div>
           <i class="fa-solid fa-lock"></i>
-          {{password_form.current_password(class="form")}}
-          {% if password_form.current_password.errors %}
-              <div class="invalid-feedback">
-                {% for error in password_form.current_password.errors %}
-                  <span>{{error}}</span>
-                {% endfor %}
-              </div>
+          {{password_form.current_password(class="form")}} {% if
+          password_form.current_password.errors %}
+          <div class="invalid-feedback">
+            {% for error in password_form.current_password.errors %}
+            <span>{{error}}</span>
+            {% endfor %}
+          </div>
           {% endif %}
         </div>
-      <div class="password">
-        {{password_form.password.label(class="label")}}
-        <br />
-        <i class="fa-solid fa-lock"></i>
-        {{password_form.password(class="form")}}
-        {% if password_form.password.errors %}
-            <div class="invalid-feedback">
-              {% for error in password_form.password.errors %}
-                <span>{{error}}</span>
-              {% endfor %}
-            </div>
-        {% endif %}
-      </div>
+        <div class="password">
+          {{password_form.password.label(class="label")}}
+          <br />
+          <i class="fa-solid fa-lock"></i>
+          {{password_form.password(class="form")}} {% if
+          password_form.password.errors %}
+          <div class="invalid-feedback">
+            {% for error in password_form.password.errors %}
+            <span>{{error}}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
 
-      <div class="confirm-password">
-        {{password_form.confirm_password.label(class="label")}}
-        <br />
-        <i class="fa-solid fa-lock"></i>
-        {{password_form.confirm_password(class="form")}}
-        {% if password_form.confirm_password.errors %}
-            <div class="invalid-feedback">
-              {% for error in password_form.confirm_password.errors %}
-                <span>{{error}}</span>
-              {% endfor %}
-            </div>
-        {% endif %}
-      </div>    
-      <div>{{password_form.submit(class="update-btn",id="password")}}</div>
+        <div class="confirm-password">
+          {{password_form.confirm_password.label(class="label")}}
+          <br />
+          <i class="fa-solid fa-lock"></i>
+          {{password_form.confirm_password(class="form")}} {% if
+          password_form.confirm_password.errors %}
+          <div class="invalid-feedback">
+            {% for error in password_form.confirm_password.errors %}
+            <span>{{error}}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        </div>
+        <div>
+          <div>{{password_form.submit(class="update-btn",id="password")}}</div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <form action="" method="post" class="delete-form">
+    <h3>I know what I am doing:</h3>
+    <input type="submit" value="Delete Account" id="del-btn" />
   </form>
 </div>
-{% endblock input %}
-  
+{% endblock content%}
