@@ -49,6 +49,13 @@ def print_user_data(form):
         form.username.data = current_user.username
         form.email.data = current_user.email
 
+@app.route('/account/',methods=['POST'])
+def delete_account():
+    user = User.query.first_or_404(current_user.username)
+    db.session.delete(user)
+    db.session.commit()
+    return redirect(url_for('home'))
+
 @app.route('/account',methods=('GET','POST'))
 @app.route('/settings',methods=('GET','POST'))
 @app.route('/profile',methods=('GET','POST'))

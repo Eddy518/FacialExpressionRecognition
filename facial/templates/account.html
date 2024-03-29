@@ -1,4 +1,5 @@
-{% extends "layout.html"%} {% block content %}
+{% extends "layout.html"%}
+{% block content %}
 <div class="account-container">
   <div class="account-heading">
     {% block alt %} Account Settings {% endblock alt %}
@@ -98,7 +99,7 @@
       </form>
     </div>
   </div>
-  <form action="" method="post" class="delete-form">
+  <form action="{{url_for('delete_account')}}" method="post" class="delete-form">
     <h3>I know what I am doing:</h3>
     <input type="submit" value="Delete Account" id="del-btn" />
   </form>
