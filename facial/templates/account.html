@@ -1,4 +1,7 @@
 {% extends "layout.html"%}
+{% block modal %}
+<script src="{{url_for('static',filename='modal.js')}}" defer></script>
+{% endblock modal %}
 {% block content %}
 <div class="account-container">
   <div class="account-heading">
@@ -99,9 +102,27 @@
       </form>
     </div>
   </div>
+  <!--
   <form action="{{url_for('delete_account')}}" method="post" class="delete-form">
     <h3>I know what I am doing:</h3>
     <input type="submit" value="Delete Account" id="del-btn" />
   </form>
+  -->
+  <div class="delete-form">
+    <h3>I know what I am doing:</h3>
+    <button id="del-btn">Delete Account</button>
+  </div>
+  <dialog id="deleteModal">
+    <form action="{{url_for('delete_account')}}" method="post">
+      <div class="modal-text">
+        <i class="fa-solid fa-triangle-exclamation"></i>    
+        <p class="modal-text">Proceed to delete?</p>
+      </div>
+      <div class="modal-btn">
+        <button id="cancelBtn">Cancel</button>
+        <input type="submit" id="confirmBtn" value="Yes"></input>
+      </div>
+    </form>
+  </dialog>
 </div>
 {% endblock content%}
