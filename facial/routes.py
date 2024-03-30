@@ -132,6 +132,26 @@ def reset_token(token):
         return redirect(url_for('login'))
     return render_template('reset_token.html',title='Reset Password',form=form)
 
+#custom error handling pages
+@app.errorhandler(404)
+def error_404(error):
+    return render_template('errors/404.html',title='404'),404
+
+@app.errorhandler(401)
+def error_403(error):
+    return render_template('errors/401.html',title='401'),401
+
+
+@app.errorhandler(403)
+def error_403(error):
+    return render_template('errors/403.html',title='403'),403
+
+@app.errorhandler(500)
+def error_500(error):
+    return render_template('errors/500.html',title='500'),500
+
+
+
 @app.route('/logout')
 def logout():
     logout_user()

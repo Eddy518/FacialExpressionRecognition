@@ -1,0 +1,12 @@
+{% extends "layout.html" %} {% block content %}
+<div class="error-container">
+  <div class="error-wrapper">
+    {% block image %} {% endblock image %}
+    <h1 class="error-heading">{% block heading %} {% endblock heading%}</h1>
+    <p class="error-text">{% block text %} {% endblock text %}</p>
+    <a href="{{url_for('home')}}" class="redirect-link"
+      >Go Back to Home Page...</a
+    >
+  </div>
+</div>
+{% endblock content %}
