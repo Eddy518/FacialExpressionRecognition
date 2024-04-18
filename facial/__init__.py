@@ -6,6 +6,10 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from dotenv import load_dotenv
 
+from flask import Flask, render_template,  request
+from keras.models import model_from_json
+import cv2
+
 load_dotenv('.env')
 
 app = Flask(__name__)
@@ -22,5 +26,15 @@ app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 mail = Mail(app)
 
-from facial import routes
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
+# Load Haarcascade File
+face_detector = cv2.CascadeClassifier("ml_folder/haarcascade_frontalface_default.xml")
+
+# Load the Model and Weights
+model = model_from_json(open("ml_folder/facial_expression_model_structure.json", "r").read())
+model.load_weights('ml_folder/facial_expression_model_weights.h5')
+model.make_predict_function()
+
+
+from facial import routes

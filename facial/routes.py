@@ -1,16 +1,33 @@
 from flask import render_template,url_for, flash, redirect, request
 from flask_mail import Message
-from facial import app,bcrypt, db, mail
+from facial import app,bcrypt, db, mail, model, face_detector, cv2, login_manager
 from facial.form import RegistrationForm,LoginForm, RequestResetForm, ResetPasswordForm, UpdateAccountForm, UpdatePasswordForm
 from facial.models import User
 from flask_login import login_user, current_user, logout_user, login_required
+
+import json
+import numpy as np
+import classifier
 
 forgot = False
 
 @app.route('/home')
 @app.route('/')
 def home():
-    return render_template('index.html',title='Home')
+    return render_template('index.html',title='Home',current_user=current_user)
+
+@app.route('/uploade', methods=['POST', 'GET'])
+def upload_file():
+    if request.method == 'POST':
+        # f.save("somefile.jpeg")
+        # f = request.files['file']
+
+        f = request.files['file'].read()
+        npimg = np.fromstring(f, np.uint8)
+        img = cv2.imdecode(npimg, cv2.IMREAD_GRAYSCALE)
+        face_properties = classifier.classify(img, face_detector, model)
+
+        return json.dumps(face_properties)
 
 @app.route('/login',methods=('GET','POST'))
 def login():
@@ -49,9 +66,9 @@ def print_user_data(form):
         form.username.data = current_user.username
         form.email.data = current_user.email
 
-@app.route('/account',methods=['POST'])
-@app.route('/settings',methods=['POST'])
-@app.route('/profile',methods=['POST'])
+@app.route('/account/delete',methods=['POST'])
+@app.route('/settings/delete',methods=['POST'])
+@app.route('/profile/delete',methods=['POST'])
 def delete_account():
     user = User.query.first_or_404(current_user.username)
     db.session.delete(user)

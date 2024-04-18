@@ -6,6 +6,7 @@
   margin: 0 auto;
   max-width: 500px;
 }
+
 .wrapper {
   height: 630px;
   border: 2px solid salmon;
@@ -17,27 +18,32 @@
   /* From https://css.glass */
   background: #181a1b;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(75, 63, 63, 0.35);
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
   border: 1px solid rgba(22, 23, 23, 1);
 }
-.wrapper > * {
+
+.wrapper>* {
   width: 450px;
   margin: 0 auto;
 }
-.heading > p {
+
+.heading>p {
   margin-top: 4px;
   color: #efeaed;
   font-weight: lighter;
   font-size: 19px;
 }
+
 .heading span {
   border-bottom: 0.5px dotted #efeaed;
 }
-.heading > img {
+
+.heading>img {
   border-radius: 9999px;
 }
+
 .heading {
   display: flex;
   flex-direction: column;
@@ -45,10 +51,12 @@
   padding: 7px;
   /* border: 2px solid magenta; */
 }
+
 .input-container h3,
-.heading > h2 {
+.heading>h2 {
   color: #efeaed;
 }
+
 /** Lbl */
 .label {
   color: #efeaed;
@@ -56,10 +64,12 @@
   font-size: large;
   margin-bottom: 5px !important;
 }
+
 .separator {
   margin-top: 12px;
   margin-bottom: 10px;
 }
+
 .form-group {
   display: flex;
   align-items: stretch;
@@ -67,13 +77,16 @@
   position: relative;
   width: 100%;
 }
+
 .input-container {
   /* border: 2px solid cadetblue; */
   padding: 15px;
 }
-.input-container > * {
+
+.input-container>* {
   margin-bottom: 14px;
 }
+
 .form {
   margin-left: 4px;
   padding: 7px;
@@ -81,23 +94,28 @@
   height: 42;
   width: 80%;
 }
-.input-container > h3 {
+
+.input-container>h3 {
   margin-bottom: 6px;
 }
+
 .forgot-password {
   display: flex;
   justify-content: flex-end;
 }
+
 .login-acc-link,
 .create-acc-link,
-.forgot-password > a {
+.forgot-password>a {
   text-decoration: none;
   color: lightblue;
 }
-.forgot-password > a:hover {
+
+.forgot-password>a:hover {
   color: #efeaed;
   cursor: pointer;
 }
+
 .signup-login-button .button {
   outline: none;
   color: #efeaed;
@@ -105,9 +123,11 @@
   height: 56px;
   width: 100%;
 }
+
 .signup-login-button .button:hover {
   background-color: #6a7f9e;
 }
+
 .button,
 button,
 input[type="submit"],
@@ -121,18 +141,15 @@ input[type="reset"] {
   outline: inherit;
 }
 
-.back-btn {
-  position: absolute;
-  bottom: 18%;
-  left: 60%;
-}
-.back-btn > a {
+.back-btn>a {
   text-decoration: none;
   color: #efeaed;
 }
-.back-btn > a:hover {
+
+.back-btn>a:hover {
   text-decoration: underline;
 }
+
 .password,
 .confirm-password,
 .email {
@@ -147,11 +164,13 @@ input[type="reset"] {
   font-weight: bold;
   font-size: 17px;
 }
+
 .input-container h3 {
   margin-bottom: 7px;
 }
-.login-account > *,
-.create-account > * {
+
+.login-account>*,
+.create-account>* {
   font-weight: 600;
 }
 
@@ -159,6 +178,7 @@ input[type="reset"] {
 input:-webkit-autofill {
   -webkit-text-fill-color: #d4d3cf !important;
 }
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -172,6 +192,7 @@ input:-webkit-autofill:active {
   margin-left: 10px;
   margin-top: 5px;
 }
+
 .media-body {
   font-size: 18px;
   color: aquamarine;

@@ -3,4 +3,4 @@ instance/
 .prettierignore
 .env
 .env.example
-requirements.txt
+somefile.jpeg

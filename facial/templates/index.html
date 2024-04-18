@@ -1,16 +1,9 @@
-{% extends "layout.html" %} {% block script %}
-<script src="{{url_for('static',filename='script.js')}}" defer></script>
-{% endblock script %} {% block content %}
+{% extends "layout.html" %} {% block content %}
 <div class="container">
   <div class="nav">
     <div class="logo">
       <a href="{{ url_for('home') }}" class="logo">
-        <img
-          src="{{url_for('static',filename='assets/logo.jpg')}}"
-          alt="logo"
-          width="60"
-          height="60"
-        />
+        <img src="{{url_for('static',filename='assets/logo.jpg')}}" alt="logo" width="60" height="60" />
         <h2 class="heading">Facial Expression Recognition</h2>
       </a>
     </div>
@@ -35,11 +28,7 @@
 
   <div class="main">
     <div class="section">
-      <img
-        src="{{ url_for('static',filename='assets/happy_face.jpg')}}"
-        alt="happy_face"
-        width="300"
-      />
+      <img src="{{ url_for('static',filename='assets/happy_face.jpg')}}" alt="happy_face" width="300" />
       <p>
         Imagine being able to understand emotions with just a glance. Our Facial
         Expression Recognition model makes it possible, with cutting-edge
@@ -47,11 +36,10 @@
       </p>
     </div>
     <pre>
-            .
-            .
-            .
-        </pre
-    >
+      .
+      .
+      .
+    </pre>
     <div class="section">
       <p>
         We do not store your image or video data. We only keep logs of your
@@ -62,11 +50,7 @@
         <a href="{{ url_for('register') }}" class="sign"> Sign up </a>now and
         experience our model at its finest. {% endif %}
       </p>
-      <img
-        src="{{ url_for('static',filename='assets/excited_person.jpg')}}"
-        alt="happy_face"
-        width="300"
-      />
+      <img src="{{ url_for('static',filename='assets/excited_person.jpg')}}" alt="happy_face" width="300" />
     </div>
     <div class="signing-container">
       <div class="sign-text">
@@ -82,50 +66,62 @@
   </div>
   {% else %}
   <!-- If the user is logged in display the app -->
-  {% block display %}
-  <script src="{{url_for('static',filename='video.js')}}" defer></script>
-  {% endblock display %}
+
+
   <div class="notice">
     <div class="danger-icon">
       <i class="fa-solid fa-circle-exclamation"></i>
     </div>
     <div>
       <span class="note">
-        <strong>Note:</strong> You need to enable your webcam first.</span
-      >
+        <strong>Note:</strong> You need to enable your webcam first.</span>
       <span class="settings">
         Visit the settings page of your browser and click enable
       </span>
     </div>
   </div>
-  <div class="interface">
-    <div class="canvas" id="canvas">
-      <video id="video" width="620" height="560" autoplay muted></video>
-    </div>
-    <div class="controls">
-      <h4>Controls</h4>
-      <div class="control-buttons">
-        <button id="start-camera" class="btn-ctrl">Use Camera</button>
-        <button id="stop-camera" class="btn-ctrl">Stop Camera</button>
-        <form>
-          <h3>Upload image or video file</h3>
-          <br />
-          <input
-            type="file"
-            id="fileUpload"
-            class="browse-file"
-            accept="image/*,video/*"
-          />
-        </form>
-        <button class="btn-ctrl">Export data</button>
+  <div class="wrap">
+    <div id="container1">
+      <div class="start-stop">
+        <a href="#" id=5 onclick="startCamera()">Start Camera</a>
+        <a href="#" id=6 onclick="stopCamera()">Stop Camera</a>
+        <a href="#" id=7 onclick="adjustCanvas(true)">Adjust/Clear Canvas</a>
       </div>
-    </div>
-    {% endif %}
-    <div class="footer">
-      <div class="copyright">
-        <p>&copy;<span id="year"></span></p>
+      <br>
+      <div id="canvas-parent">
+        <canvas id="drawCanvas"></canvas>
+        <video contrls id="videoElement" onloadeddata="adjustCanvas()"></video>
+        <canvas id="captureCanvas"></canvas>
       </div>
+
+    </div>
+    <div id="container2">
+      <h4>Analysis(times) :</h4>
+      <div id="analytics">
+        <p>Angry: <span id="angry">0</span></p>
+        <p>Disgust: <span id="disgust">0</span></p>
+        <p>Fear: <span id="fear">0</span></p>
+        <p>Happy: <span id="happy">0</span></p>
+        <p>Sad: <span id="sad">0</span></p>
+        <p>Surprise: <span id="surprise">0</span></p>
+        <p>Neutral: <span id="neutral">0</span></p>
+      </div>
+      <small id="analysis-info">Click stop camera to view analysis results</small>
     </div>
   </div>
-  {% endblock content %}
+  <br>
+  <div id="graph-parent">
+    <h3>Graph :</h3>
+    <div id="graph">
+
+    </div>
+
+  </div>
+  {% endif %}
+  <div class="footer">
+    <div class="copyright">
+      <p>&copy;<span id="year"></span></p>
+    </div>
+  </div>
 </div>
+{% endblock content %}
