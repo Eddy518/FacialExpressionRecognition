@@ -4,7 +4,7 @@ Flask_Login==0.6.3
 Flask_Mail==0.9.1
 flask_sqlalchemy==3.1.1
 flask_wtf==1.2.1
-itsdangerous>2.0.1
+itsdangerous==2.0.1
 tensorflow==2.15.0
 tensorflow_estimator==2.15.0
 numpy==1.26.4
