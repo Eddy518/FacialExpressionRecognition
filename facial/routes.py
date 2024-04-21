@@ -1,3 +1,4 @@
+import os
 from flask import render_template,url_for, flash, redirect, request
 from flask_mail import Message
 from facial import app,bcrypt, db, mail, model, face_detector, cv2, login_manager
@@ -28,6 +29,17 @@ def upload_file():
         face_properties = classifier.classify(img, face_detector, model)
 
         return json.dumps(face_properties)
+
+@app.route('/stop_camera', methods=['POST'])
+def stop_camera():
+    # Delete the saved image from the server's storage
+    if os.path.exists('somefile.jpeg'):
+        os.remove('somefile.jpeg')
+        # print('Deleted')
+        return 'Image deleted successfully'
+    else:
+        # print('not deleted')
+        return 'Image not found'
 
 @app.route('/login',methods=('GET','POST'))
 def login():
@@ -92,7 +104,7 @@ def account():
                 current_user.email = form.email.data
                 db.session.commit()
                 flash("Your account has been updated successfully!",'success')
-                print("test if in profile")
+                # print("test if in profile")
                 return redirect(url_for('account'))
 
     if password_form.validate_on_submit():    
@@ -100,11 +112,11 @@ def account():
         current_user.password = hashed_password
         db.session.commit()
         flash("Your account has been updated successfully!",'success')
-        print("test if in password")
+        # print("test if in password")
 
         return redirect(url_for('account'))
     else:
-        print("test else in password")
+        # print("test else in password")
         render_template('account.html',title='Profile',form=form,password_form=password_form)
 
 

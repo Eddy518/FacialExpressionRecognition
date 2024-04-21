@@ -106,6 +106,13 @@ function stopCamera() {
   }
   // Check stream
   else if (streamRef.active) {
+
+    // Send AJAX request to notify the backend that the camera is stopped
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/stop_camera', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
+
     video.pause();
     streamRef.getTracks()[0].stop();
     video.srcObject = null;
@@ -117,6 +124,7 @@ function stopCamera() {
     updateAnalytics();
 
     drawBarChart();
+
   }
 }
 

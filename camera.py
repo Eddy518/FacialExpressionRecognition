@@ -8,15 +8,15 @@ class VideoCamera(object):
     def __init__(self):
         # Using OpenCV to capture from device 0.
         self.video = cv2.VideoCapture(0)
-        # self.video = cv2.VideoCapture("/home/eddy/Documents/FER-TF/videos/facial_exp.mkv")
+        # self.video = cv2.VideoCapture("videos/facial_exp.mkv")
 
         
         # Load Haarcascade File
         self.face_detector = cv2.CascadeClassifier("haarcascades/haarcascade_frontalface_default.xml")
 
         # Load the Model and Weights
-        self.model = model_from_json(open("/home/eddy/face/ml_folder/facial_expression_model_structure.json", "r").read())
-        self.model.load_weights('/home/eddy/face/ml_folder/facial_expression_model_weights.h5')
+        self.model = model_from_json(open("ml_folder/facial_expression_model_structure.json", "r").read())
+        self.model.load_weights('ml_folder/facial_expression_model_weights.h5')
     
     def __del__(self):
         self.video.release()
