@@ -10,9 +10,9 @@ def load_user(user_id):
 
 class User(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)
-    username = db.Column(db.String(15),unique=True,nullable=False)
-    email = db.Column(db.String(120),unique=True,nullable=False)
-    password = db.Column(db.String(60),nullable=False)
+    username = db.Column(db.Text,unique=True,nullable=False)
+    email = db.Column(db.Text,unique=True,nullable=False)
+    password = db.Column(db.Text,nullable=False)
 
     # Generate a unique password reset token
     def get_reset_token(self,expires_sec=1800):

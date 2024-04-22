@@ -6,7 +6,6 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from dotenv import load_dotenv
 
-from flask import Flask, render_template,  request
 from keras.models import model_from_json
 import cv2
 
@@ -14,7 +13,9 @@ load_dotenv('.env')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-app.config['SQLALCHEMY_DATABASE_URI']= os.getenv('SQLALCHEMY_DATABASE_URI').replace("postgres://", "postgresql://", 1)
+# app.config['SQLALCHEMY_DATABASE_URI']= os.getenv('SQLALCHEMY_DATABASE_URI').replace("postgres://", "postgresql://", 1)
+app.config['SQLALCHEMY_DATABASE_URI']= os.getenv('DATABASE_URL')
+
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
