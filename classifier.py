@@ -34,7 +34,7 @@ def classify(frame, face_detector, model):
 
             img_tensor /= 255  # pixels are in scale of [0, 255]. normalize all pixels in scale of [0, 1]
 
-            predictions = model.predict(img_tensor)  # store probabilities of 2 facial expressions
+            predictions = model(img_tensor)  # store probabilities of 2 facial expressions
             label = emotions[np.argmax(predictions)]  # Get label with most probability
 
             confidence = np.max(predictions)  # Get the confidence of that label
